@@ -4,9 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.terselubung.movieshow.R;
 import com.terselubung.movieshow.model.Movie;
@@ -15,12 +12,11 @@ import com.terselubung.movieshow.service.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View{
+public class MainActivity extends AppCompatActivity implements MainView{
 
     private RecyclerView movieRV;
-    private MainContract.Presenter mainPresenter;
+    private MainPresenter mainPresenter;
     private MoviesAdapter moviesAdapter;
     private int page = 1;
     private boolean isLoading = false;
@@ -30,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainPresenter = new MainPresenter(this,new MovieRepositoryImpl(RetrofitClient.getInstance().create(ApiInterface.class)));
+        mainPresenter = new MainPresenterImpl(this,new MovieRepositoryImpl(RetrofitClient.getInstance().create(ApiInterface.class)));
 
         setContentView(R.layout.activity_main);
         initComponent();
