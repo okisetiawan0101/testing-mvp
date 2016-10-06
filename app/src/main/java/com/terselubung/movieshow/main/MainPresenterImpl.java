@@ -6,6 +6,8 @@ import com.terselubung.movieshow.model.Movie;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by Oki on 10/4/2016.
  */
@@ -15,6 +17,7 @@ public class MainPresenterImpl implements MainPresenter {
     private MainView mainView;
     private MovieRepository movieRepository;
 
+    @Inject
     public MainPresenterImpl(@NonNull MainView mainView, @NonNull MovieRepository movieRepository) {
         this.mainView = mainView;
         this.movieRepository = movieRepository;

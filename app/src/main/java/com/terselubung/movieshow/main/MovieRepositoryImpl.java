@@ -1,10 +1,10 @@
 package com.terselubung.movieshow.main;
 
 import android.support.annotation.NonNull;
-
 import com.terselubung.movieshow.model.MoviesResponse;
 import com.terselubung.movieshow.service.ApiInterface;
-import com.terselubung.movieshow.service.RetrofitClient;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,6 +17,7 @@ import retrofit2.Response;
 public class MovieRepositoryImpl implements MovieRepository {
     private ApiInterface service;
 
+    @Inject
     public MovieRepositoryImpl(ApiInterface service){
         this.service = service;
     }
